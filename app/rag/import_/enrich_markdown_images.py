@@ -40,7 +40,7 @@ def load_markdown_and_image_dir(state) -> tuple[str, Path, Path]:
             logger.error(f"从{md_path}读取md_content内容失败，业务无法继续进行")
             raise ValueError(f"从{md_path}读取md_content内容失败，业务无法继续进行")
     # images 对应Path获取
-    images_path_obj = md_path_obj / "images"
+    images_path_obj = md_path_obj.parent / "images"
     return md_content, md_path_obj, images_path_obj
 
 
