@@ -100,24 +100,24 @@ def split_by_titles(md_content: str, file_title: str) -> list[dict]:
         else:
             current_title_lines.append(line)
 
-        # ===================== 保存最后一个块 =====================
-        if current_title and len(current_title_lines) > 1:
-            chunks.append({
-                "content": "\n".join(current_title_lines),
-                "title": current_title,
-                "file_title": file_title
-            })
-            chunk_size += 1
+    # ===================== 保存最后一个块 =====================
+    if current_title and len(current_title_lines) > 1:
+        chunks.append({
+            "content": "\n".join(current_title_lines),
+            "title": current_title,
+            "file_title": file_title
+        })
+        chunk_size += 1
 
-        # ===================== 兜底：全文无标题时 =====================
-        if chunk_size == 0:
-            chunks.append({
-                "content": md_content,
-                "title": current_title,
-                "file_title": file_title
-            })
-        logger.info(f"完成文档语义切割，共切除：{chunk_size}块! 切块内容： {chunks}")
-        return chunks
+    # ===================== 兜底：全文无标题时 =====================
+    if chunk_size == 0:
+        chunks.append({
+            "content": md_content,
+            "title": current_title,
+            "file_title": file_title
+        })
+    logger.info(f"完成文档语义切割，共切除：{chunk_size}块! 切块内容： {chunks}")
+    return chunks
 
 
 @step_log("_split_long_section")
