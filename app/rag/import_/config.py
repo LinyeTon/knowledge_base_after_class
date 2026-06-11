@@ -13,10 +13,14 @@ MINERU_DOWNLOAD_TIMEOUT_SECONDS = 30
 CHUNK_MAX_SIZE = 1000
 # 文本切块基准长度：单个文本块理想大小为 600 字符（兼顾语义完整性 + 检索精度）
 CHUNK_SIZE = 600
-# 文本块重叠长度：相邻块之间重叠 20 字符，保证语义不被切断、上下文连贯
-CHUNK_OVERLAP = 20
+# 文本块重叠长度：相邻块之间重叠 50 字符，保证语义不被切断、上下文连贯
+CHUNK_OVERLAP = 50
 
 # chunks 获取前五个切片
 ITEM_NAME_CONTEXT_CHUNK_K=5
 # 上下文最多不能超过10000字符
 ITEM_NAME_CONTEXT_TOTAL_MAX_CHARS=10000
+
+# chunks批量生成向量的数量!
+# 数量 content 窗口大小
+EMBEDDING_BATCH_SIZE = 5
